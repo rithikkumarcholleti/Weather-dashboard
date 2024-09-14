@@ -1,0 +1,214 @@
+/* Overall Dashboard Styles */
+.weather-dashboard {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Light and Dark Modes */
+.weather-dashboard.light-mode {
+  background-color: white;
+  color: black;
+}
+
+.weather-dashboard.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+/* Header Section */
+.weather-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.weather-dashboard-header input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  color: #333;
+  flex: 1;
+  min-width: 200px;
+}
+
+.weather-dashboard.dark-mode .weather-dashboard-header input[type="text"] {
+  border: 1px solid #666;
+  color: white;
+  background-color: #444;
+}
+
+.weather-dashboard-header button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #092442;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.weather-dashboard-header button:hover {
+  background-color: #0056b3;
+}
+
+/* Toggle Button Styles */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-switch .slider {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 10px;
+}
+
+.weather-dashboard.dark-mode .toggle-switch .slider {
+  background-color: #666;
+}
+
+.slider::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider::before {
+  transform: translateX(30px);
+}
+
+.toggle-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.weather-dashboard.dark-mode .toggle-text {
+  color: white;
+}
+
+/* Weather Information Section */
+.weather-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.current-weather {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Forecast Sections */
+.forecast-section,
+.hourly-forecast-section {
+  margin-top: 30px;
+}
+
+.forecast-container,
+.hourly-forecast-container {
+  display: flex;
+  flex-wrap: nowrap; /* Force horizontal layout by default */
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.forecast-card,
+.hourly-forecast-card {
+  flex: 1;
+  min-width: 150px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  color: #333;
+}
+
+.weather-dashboard.dark-mode .forecast-card,
+.weather-dashboard.dark-mode .hourly-forecast-card {
+  background-color: #444;
+  color: white;
+}
+
+.forecast-card:hover,
+.hourly-forecast-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .weather-dashboard-header button {
+    width: 100%;
+  }
+
+  .weather-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .forecast-container,
+  .hourly-forecast-container {
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-dashboard {
+    padding: 10px;
+  }
+
+  .weather-dashboard-header input[type="text"],
+  .weather-dashboard-header button {
+    font-size: 14px;
+  }
+
+  .current-weather {
+    font-size: 16px;
+  }
+
+  .forecast-card,
+  .hourly-forecast-card {
+    min-width: 120px;
+  }
+
+  .forecast-container,
+  .hourly-forecast-container {
+    flex-direction: column; /* Stack forecast cards vertically on very small screens */
+  }
+}
